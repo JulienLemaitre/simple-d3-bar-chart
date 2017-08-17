@@ -28,6 +28,9 @@ html, body {
   justify-content: flex-start;
   align-content: center;
   padding-top: 2em; }
+  #App-body .title {
+    font-weight: bold;
+    font-size: 2em; }
 
 svg {
   margin: 0 auto; }
@@ -65,3 +68,6 @@ svg {
   .legend p {
     text-align: center;
     margin: 0 1em; }
+
+.tick {
+  font-size: 1.4em; }

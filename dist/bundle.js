@@ -975,7 +975,7 @@ function myPluginLoadEvent(func) {
 myPluginLoadEvent(function () {
   var _this = this;
 
-  var margin = { top: 20, bottom: 20, right: 20, left: 50 };
+  var margin = { top: 40, bottom: 20, right: 20, left: 50 };
   var width = 900;
   var height = 400;
   var hovering = false;
@@ -987,6 +987,9 @@ myPluginLoadEvent(function () {
 
   // tooltip div
   var tooltip = appBody.append('div').attr('class', 'tooltip').style('opacity', 0);
+
+  // Title
+  var title = svg.append('text').attr('x', width / 2).attr('y', margin.top).attr('text-anchor', 'middle').attr('fill', 'steelblue').attr('class', 'title');
 
   // Legend
   var legend = appBody.append('div').attr('class', 'legend');
@@ -1001,7 +1004,8 @@ myPluginLoadEvent(function () {
 
   var handleDatas = function handleDatas(responseDatas) {
     var datas = responseDatas.data;
-    var rectWidth = width / datas.length;
+    // const rectWidth = (width) / datas.length;
+    var rectWidth = 4;
 
     // Legend
     console.log("responseDatas:", responseDatas);
@@ -1015,6 +1019,9 @@ myPluginLoadEvent(function () {
     legend.html(description);
 
     var legendY = "Units: Billions of Dollars";
+
+    // Title
+    title.text('USA Gross Domestic Product');
 
     // Datas
     var parseDatas = [];
@@ -1048,7 +1055,7 @@ myPluginLoadEvent(function () {
     svg.append('g').attr('transform', 'translate(0, ' + (height - margin.bottom) + ')').call(xAxis);
 
     var yAxisG = svg.append('g').attr('transform', 'translate(' + margin.left + ', 0)');
-    yAxisG.append('text').attr('transform', 'rotate(-90)').attr('y', '20').attr('x', '-20').style('text-anchor', 'end').style('font-size', '16px').attr('fill', 'black').text(legendY);
+    yAxisG.append('text').attr('transform', 'rotate(-90)').attr('y', '20').attr('x', '' + -margin.top).style('text-anchor', 'end').style('font-size', '16px').attr('fill', 'black').text(legendY);
     yAxisG.call(yAxis);
 
     // render rectangles
@@ -1070,7 +1077,7 @@ myPluginLoadEvent(function () {
       var rect = d3.event.target;
       d3.select(rect).attr('fill', 'steelblue');
       _this.unsetHoverTimeout = setTimeout(function () {
-        tooltip.transition().duration(500).style('opacity', 0);
+        tooltip.transition().duration(300).style('opacity', 0);
       }, 200);
       // this.props.onRectOut();
     });
@@ -18907,7 +18914,7 @@ exports = module.exports = __webpack_require__(31)(undefined);
 
 
 // module
-exports.push([module.i, "html, body {\n  min-height: 100%;\n  height: 100%;\n  margin: 0;\n  font-family: 'Open Sans', sans-serif; }\n\n.App {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-content: center;\n  min-height: 100%;\n  position: relative; }\n\n.App-header {\n  display: flex;\n  justify-content: center;\n  background-color: #222222;\n  color: #fff; }\n  .App-header h1 {\n    margin: 1.5em 0; }\n\n#App-body {\n  flex: 1;\n  background-color: #fff;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-content: center;\n  padding-top: 2em; }\n\nsvg {\n  margin: 0 auto; }\n\n.bar {\n  background-color: #aaa; }\n  .bar:hover {\n    background-color: #ddd; }\n\n.tooltip {\n  position: absolute;\n  background-color: #fecc00;\n  padding: 5px;\n  color: #000;\n  pointer-events: none;\n  border-radius: 4px; }\n  .tooltip p {\n    margin: 0; }\n  .tooltip .gdp {\n    font-weight: bold; }\n    .tooltip .gdp::before {\n      content: \"$\";\n      display: inline-block; }\n    .tooltip .gdp::after {\n      content: \"Billion\";\n      display: inline-block;\n      margin-left: 0.2em; }\n  .tooltip .date {\n    font-size: 0.8em; }\n\n.legend {\n  color: steelblue;\n  font-size: 0.8em;\n  margin-top: 1em; }\n  .legend p {\n    text-align: center;\n    margin: 0 1em; }\n", ""]);
+exports.push([module.i, "html, body {\n  min-height: 100%;\n  height: 100%;\n  margin: 0;\n  font-family: 'Open Sans', sans-serif; }\n\n.App {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-content: center;\n  min-height: 100%;\n  position: relative; }\n\n.App-header {\n  display: flex;\n  justify-content: center;\n  background-color: #222222;\n  color: #fff; }\n  .App-header h1 {\n    margin: 1.5em 0; }\n\n#App-body {\n  flex: 1;\n  background-color: #fff;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-content: center;\n  padding-top: 2em; }\n  #App-body .title {\n    font-weight: bold;\n    font-size: 2em; }\n\nsvg {\n  margin: 0 auto; }\n\n.bar {\n  background-color: #aaa; }\n  .bar:hover {\n    background-color: #ddd; }\n\n.tooltip {\n  position: absolute;\n  background-color: #fecc00;\n  padding: 5px;\n  color: #000;\n  pointer-events: none;\n  border-radius: 4px; }\n  .tooltip p {\n    margin: 0; }\n  .tooltip .gdp {\n    font-weight: bold; }\n    .tooltip .gdp::before {\n      content: \"$\";\n      display: inline-block; }\n    .tooltip .gdp::after {\n      content: \"Billion\";\n      display: inline-block;\n      margin-left: 0.2em; }\n  .tooltip .date {\n    font-size: 0.8em; }\n\n.legend {\n  color: steelblue;\n  font-size: 0.8em;\n  margin-top: 1em; }\n  .legend p {\n    text-align: center;\n    margin: 0 1em; }\n\n.tick {\n  font-size: 1.4em; }\n", ""]);
 
 // exports
 

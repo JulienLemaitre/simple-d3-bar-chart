@@ -33,6 +33,11 @@ html, body {
   justify-content: flex-start;
   align-content: center;
   padding-top: 2em;
+
+  .title {
+    font-weight: bold;
+    font-size: 2em;
+  }
 }
 
 svg {
@@ -88,4 +93,8 @@ svg {
     text-align: center;
     margin: 0 1em;
   }
+}
+
+.tick {
+  font-size: 1.4em;
 }

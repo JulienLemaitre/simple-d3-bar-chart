@@ -22,7 +22,7 @@ function myPluginLoadEvent(func) {
 // pass the function you want to call at 'window.onload', in the function defined above
 myPluginLoadEvent(function(){
 
-  const margin = {top: 20, bottom: 20, right: 20, left: 50};
+  const margin = {top: 40, bottom: 20, right: 20, left: 50};
   const width = 900;
   const height = 400;
   let hovering = false;
@@ -39,6 +39,14 @@ myPluginLoadEvent(function(){
     .append('div')
     .attr('class', 'tooltip')
     .style('opacity', 0);
+
+  // Title
+  let title = svg.append('text')
+    .attr('x', width / 2)
+    .attr('y', margin.top)
+    .attr('text-anchor', 'middle')
+    .attr('fill', 'steelblue')
+    .attr('class', 'title');
 
   // Legend
   let legend = appBody
@@ -57,7 +65,8 @@ myPluginLoadEvent(function(){
 
   const handleDatas = (responseDatas) => {
     const datas = responseDatas.data;
-    const rectWidth = (width) / datas.length;
+    // const rectWidth = (width) / datas.length;
+    const rectWidth = 4;
 
     // Legend
     console.log("responseDatas:", responseDatas);
@@ -73,6 +82,9 @@ myPluginLoadEvent(function(){
     legend.html(description);
 
     const legendY = "Units: Billions of Dollars";
+
+    // Title
+    title.text(`USA Gross Domestic Product`);
 
     // Datas
     let parseDatas = [];
@@ -114,7 +126,7 @@ myPluginLoadEvent(function(){
     yAxisG.append('text')
       .attr('transform','rotate(-90)')
       .attr('y', '20')
-      .attr('x', '-20')
+      .attr('x', `${-margin.top}`)
       .style('text-anchor', 'end')
       .style('font-size', '16px')
       .attr('fill', 'black')
@@ -147,7 +159,7 @@ myPluginLoadEvent(function(){
         d3.select(rect).attr('fill','steelblue');
         this.unsetHoverTimeout = setTimeout( () => {
             tooltip.transition()
-              .duration(500)
+              .duration(300)
               .style('opacity', 0)
           }, 200
         );
