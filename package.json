@@ -1,0 +1,26 @@
+{
+  "name": "d3-bar-chart-wo-react",
+  "version": "1.0.0",
+  "description": "simple D3 bar chart",
+  "main": "index.html",
+  "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/ && npm run build",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build": "webpack"
+  },
+  "author": "Julien Lemaitre",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "d3": "^4.10.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.5",
+    "node-sass-chokidar": "0.0.3",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5"
+  }
+}

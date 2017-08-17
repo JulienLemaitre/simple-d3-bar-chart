@@ -1,0 +1,91 @@
+html, body {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  min-height: 100%;
+  position: relative;
+}
+
+.App-header {
+  display: flex;
+  justify-content: center;
+  background-color: #222222;
+  color: #fff;
+
+  h1 {
+    margin: 1.5em 0;
+  }
+}
+
+#App-body {
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  padding-top: 2em;
+}
+
+svg {
+  //width: 100%;
+  //height: 100%;
+  margin: 0 auto;
+}
+
+.bar {
+  background-color: #aaa;
+
+  &:hover {
+    background-color: #ddd;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #fecc00;
+  padding: 5px;
+  color: #000;
+  pointer-events: none;
+  border-radius: 4px;
+
+  p {
+    margin: 0;
+  }
+  .gdp {
+    font-weight: bold;
+
+    &::before {
+      content: "$";
+      display: inline-block;
+    }
+
+    &::after {
+      content: "Billion";
+      display: inline-block;
+      margin-left: 0.2em;
+    }
+  }
+  .date {
+    font-size: 0.8em;
+  }
+}
+
+.legend {
+  color: steelblue;
+  font-size: 0.8em;
+  margin-top: 1em;
+
+  p {
+    text-align: center;
+    margin: 0 1em;
+  }
+}
