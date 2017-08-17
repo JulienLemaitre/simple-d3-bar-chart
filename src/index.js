@@ -25,7 +25,6 @@ myPluginLoadEvent(function(){
   const margin = {top: 40, bottom: 20, right: 20, left: 50};
   const width = 900;
   const height = 400;
-  let hovering = false;
 
   // svg canvas
   let svg = d3.select('svg')
@@ -53,8 +52,6 @@ myPluginLoadEvent(function(){
     .append('div')
     .attr('class', 'legend');
 
-  console.log("legend:", legend);
-
   axios.get('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json')
     .then(function (response) {
       handleDatas(response.data);
@@ -69,7 +66,6 @@ myPluginLoadEvent(function(){
     const rectWidth = 4;
 
     // Legend
-    console.log("responseDatas:", responseDatas);
     let descSplit = [];
     if (responseDatas.description)
       descSplit = responseDatas.description.split(/\n/);
@@ -90,13 +86,11 @@ myPluginLoadEvent(function(){
     let parseDatas = [];
     datas.map(d => {
       let date = d[0].split('-').join(' ');
-      // date = d3.timeFormat("%B %Y")(date);
       date = new Date(date);
       let gdp = d[1];
       parseDatas.push({ date, gdp });
     });
 
-    console.log('parseDatas:', parseDatas);
 
     // Scales
     const xExtent = d3.extent(parseDatas, d => d.date);
@@ -163,7 +157,6 @@ myPluginLoadEvent(function(){
               .style('opacity', 0)
           }, 200
         );
-        // this.props.onRectOut();
       });
   };
 

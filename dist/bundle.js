@@ -978,7 +978,6 @@ myPluginLoadEvent(function () {
   var margin = { top: 40, bottom: 20, right: 20, left: 50 };
   var width = 900;
   var height = 400;
-  var hovering = false;
 
   // svg canvas
   var svg = d3.select('svg').style('width', width + 'px').style('height', height + 'px');
@@ -994,8 +993,6 @@ myPluginLoadEvent(function () {
   // Legend
   var legend = appBody.append('div').attr('class', 'legend');
 
-  console.log("legend:", legend);
-
   _axios2.default.get('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json').then(function (response) {
     handleDatas(response.data);
   }).catch(function (error) {
@@ -1008,7 +1005,6 @@ myPluginLoadEvent(function () {
     var rectWidth = 4;
 
     // Legend
-    console.log("responseDatas:", responseDatas);
     var descSplit = [];
     if (responseDatas.description) descSplit = responseDatas.description.split(/\n/);
 
@@ -1027,13 +1023,10 @@ myPluginLoadEvent(function () {
     var parseDatas = [];
     datas.map(function (d) {
       var date = d[0].split('-').join(' ');
-      // date = d3.timeFormat("%B %Y")(date);
       date = new Date(date);
       var gdp = d[1];
       parseDatas.push({ date: date, gdp: gdp });
     });
-
-    console.log('parseDatas:', parseDatas);
 
     // Scales
     var xExtent = d3.extent(parseDatas, function (d) {
@@ -1079,7 +1072,6 @@ myPluginLoadEvent(function () {
       _this.unsetHoverTimeout = setTimeout(function () {
         tooltip.transition().duration(300).style('opacity', 0);
       }, 200);
-      // this.props.onRectOut();
     });
   };
 });

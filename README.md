@@ -6,6 +6,6 @@ Simple Bar Chart made with [d3.js](https://d3js.org/).
 
 You can see [this bar chart on Codepen](https://codepen.io/LCreation/full/OjzBbK/).
 
-# Tech used
+# Techno used
 
 * d3
